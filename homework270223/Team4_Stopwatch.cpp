@@ -11,7 +11,7 @@ void resizeConsole(int width, int height)
 	MoveWindow(console, r.left, r.top, width, height, TRUE);
 }
 
-void XoaManHinh()
+void clearScreen()
 {
 	HANDLE hOut;
 	COORD Position;
@@ -23,10 +23,10 @@ void XoaManHinh()
 int main()
 {
 	resizeConsole(550, 300);
-	printf("Nhan Phim Bat Ki De Bat Dau\n");
+	printf("Press any key to start\n");
 	printf("00 : 00\n");
 	char x = _getch();
-	int dem = 1;
+	int countvar = 1;
 	//int k = 0, f = 0;
 	int arr[100];
 	int idx = 0;
@@ -36,23 +36,23 @@ int main()
 			{
 				for (int j = 0; j <= 60; j++)
 				{
-					system("cls"); 
-					XoaManHinh();
+					system("cls");
+					clearScreen();
 					printf("%02d : %02d\n", i, j);
-					printf("\nKet Qua Luu:\n");
+					printf("\nSave result:\n");
 					for (int f = 0; f < idx; f++)
 					{
 						printf("%02d : %02d\n", arr[f], brr[f]);
 					}
-					
+
 					printf("\n\nSpace : Pause\t\tENTER : Save\t\tESC : Exit\n");
 					Sleep(1000);
 
 					if (GetAsyncKeyState(VK_SPACE))
 					{
-						dem++;
+						countvar++;
 					}
-					if (dem % 2 == 0)
+					if (countvar % 2 == 0)
 					{
 						j--;
 						char a = _getch();
@@ -67,7 +67,7 @@ int main()
 						brr[idx] = j;
 						idx++;
 					}
-					
+
 				}
 			}
 	loi:
